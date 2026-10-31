@@ -94,6 +94,9 @@ export class Student {
   @Prop({ required: true, unique: true, index: true })
   registrationNumber: string;
 
+  @Prop({ required: false })
+  studentId: string;
+
   @Prop({ required: true, default: 'registered' })
   status: 'registered' | 'assessment_started' | 'completed';
 

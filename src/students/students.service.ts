@@ -99,6 +99,7 @@ export class StudentsService {
       courseYear,
       age: dto.age ? Number(dto.age) : undefined,
       registrationNumber,
+      studentId: registrationNumber,
       status: 'registered',
       careerInterests: Array.isArray(dto.careerInterests) ? dto.careerInterests : [],
       selectedDomain: dto.selectedDomain || 'HTML & CSS Web Development',
@@ -194,8 +195,14 @@ export class StudentsService {
     }
 
     if (!student) {
+      const trimmed = id.trim();
       student = await this.studentModel
-        .findOne({ registrationNumber: id.toUpperCase().trim() })
+        .findOne({
+          $or: [
+            { registrationNumber: trimmed.toUpperCase() },
+            { studentId: trimmed },
+          ],
+        })
         .lean()
         .exec();
     }
