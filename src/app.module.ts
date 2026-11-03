@@ -7,6 +7,7 @@ import { StudentsModule } from './students/students.module';
 import { QuestionsModule } from './questions/questions.module';
 import { AssessmentModule } from './assessment/assessment.module';
 import { ReportsModule } from './reports/reports.module';
+import { InternshipsModule } from './internships/internships.module';
 
 @Module({
   imports: [
@@ -33,6 +34,7 @@ import { ReportsModule } from './reports/reports.module';
     QuestionsModule,
     AssessmentModule,
     ReportsModule,
+    InternshipsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
